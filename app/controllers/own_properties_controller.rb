@@ -1,6 +1,6 @@
 class OwnPropertiesController < ApplicationController
 
-  before_action :set_own_property, only: %i[destroy]
+  before_action :set_own_property, only: %i[edit update destroy]
   def index
     @own_properties = current_user.properties.includes(:community).page(params[:page])
   end
@@ -8,6 +8,8 @@ class OwnPropertiesController < ApplicationController
   def new
     @own_property = Property.new
   end
+
+  def edit; end
 
   def create
     @own_property = current_user.properties.build(property_params)
@@ -18,6 +20,16 @@ class OwnPropertiesController < ApplicationController
     else
       flash[:danger] = t('record_create_fail')
       render :new
+    end
+  end
+
+  def update
+    if @own_property.update(property_params)
+      flash[:success] = t('record_create_success')
+      redirect_to own_properties_path
+    else
+      flash[:danger] = t('record_update_fail')
+      render :edit
     end
   end
 

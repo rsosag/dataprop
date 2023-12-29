@@ -42,12 +42,15 @@ es:
   not_own_properties: No tienes propiedades
   destroy: Eliminar
   edit: Actualizar
+  edit_property: Actualizar propiedad
   new_property: Nueva propiedad
   rent: Arriendo
   sale: Venta
   save: Guardar
   record_create_success: Creación correcta
   record_create_fail: Falló la creación
+  record_update_success: Actualización correcta
+  record_update_fail: Falló la actualización
   record_destroy_success: Eliminado correctament
   record_destroy_fail: No se pudo eliminar
   flash_message_errors:
