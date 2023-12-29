@@ -1,0 +1,78 @@
+<main class="container">
+
+  <h1><%= t('new_property') %></h1>
+
+  <%= form_with model: @own_property, url: own_properties_path, local: true, method: :post, data: {turbo: false} do |f| %>
+    <% if @own_property.errors.any? %>
+      <%= render 'layouts/flash_errors_explanation', record: @own_property %>
+    <% end %>
+
+    <div class="row mb-3">
+      <div class="col-md-6 col-sm-12">
+        <%= f.label :operation_type, class: 'form-label' %>
+        <%= f.select :operation_type, types_collection, { selected: @own_property.operation_type, include_blank: true }, class: 'form-select' %>
+      </div>
+
+      <div class="col-md-6 col-sm-124">
+        <%= f.label :community_id, class: 'form-label' %>
+        <%= f.select :community_id, communities_collection, { selected: @own_property.community_id, include_blank: true }, class: 'form-select' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6 col-sm-12">
+        <%= f.label :price, class: 'form-label' %>
+        <%= f.number_field :price, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <%= f.label :currency, class: 'form-label' %>
+        <%= f.select :currency, currencies_collection, { selected: @own_property.currency, include_blank: true }, class: 'form-select' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <%= f.label :address, class: 'form-label' %>
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4 col-sm-12">
+        <%= f.label :area, class: 'form-label' %>
+        <%= f.number_field :area, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-4 col-sm-12">
+        <%= f.label :number_of_rooms, class: 'form-label' %>
+        <%= f.number_field :number_of_rooms, class: 'form-control' %>
+      </div>
+
+      <div class="col-md-4 col-sm-12">
+        <%= f.label :number_of_bathrooms, class: 'form-label' %>
+        <%= f.number_field :number_of_bathrooms, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <%= f.label :description, class: 'form-label' %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-12">
+        <%= f.label :images, class: 'form-label' %>
+        <%= f.file_field :images, multiple: true, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <%= f.submit t('save'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</main>

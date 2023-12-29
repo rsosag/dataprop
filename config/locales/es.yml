@@ -11,9 +11,23 @@ es:
         password_confirmation: Confirmar contraseña
       community:
         name: Nombre
+      property:
+        price: Precio
+        operation_type: Tipo
+        currency: Moneda
+        user_id: Gestor
+        community: Comuna
+        address: Dirección
+        number_of_rooms: Nro. Habitaciones
+        number_of_bathrooms: Nro. Baños
+        images: Fotos
+        description: Descripción
     errors:
       messages:
         blank: es requerido
+        required: es requerido
+        not_a_number: no es un número
+        inclusion: no está en la lista
   sign_in: Iniciar sesión
   sign_out: Salir
   sign_up: Registrarse
@@ -23,5 +37,17 @@ es:
   remember_me: Recuérdame
   characters_minimum: '%{count} caracteres mínimo'
   properties: Propiedades
-  own_properties: Mi propiedades
+  own_properties: Mis propiedades
   welcome: Bienvenido %{email}
+  not_own_properties: No tienes propiedades
+  destroy: Eliminar
+  edit: Actualizar
+  new_property: Nueva propiedad
+  rent: Arriendo
+  sale: Venta
+  save: Guardar
+  record_create_success: Creación correcta
+  record_create_fail: Falló la creación
+  flash_message_errors:
+    one: 1 error ha ocurrido
+    other: '%{count} errores han ocurrido'

@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DATAPROP</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>DATAPROP</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
-  <body>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+<body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="<%= root_path %>">
         <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
         DATAPROP
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><%= t('properties') %></a>
-          </li>
           <% if user_signed_in? %>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#"><%= t('own_properties') %></a>
+            <li class="nav-item ">
+              <%= link_to t('own_properties').upcase, own_properties_path, class: "nav-link #{ 'active' if params[:controller] == 'own_properties' }" %>
             </li>
           <% end %>
         </ul>
@@ -41,6 +38,10 @@
     </div>
   </nav>
 
+  <div class="content min-vh-100">
+    <%= render partial: 'layouts/flash_message' %>
+
     <%= yield %>
+  </div>
   </body>
 </html>
