@@ -9,6 +9,12 @@ es:
         email: Correo electrónico
         password: Contraseña
         password_confirmation: Confirmar contraseña
+      community:
+        name: Nombre
+    errors:
+      messages:
+        blank: es requerido
+
   sign_in: Iniciar sesión
   sign_up: Registrarse
   forgot_password: ¿Olvidaste tu contraseña?

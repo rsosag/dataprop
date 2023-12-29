@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'csv'
+
+# Create the communities in a initial load
+puts 'Starting create comunas'
+
+CSV.foreach(Rails.root.join('db/data/comunas.csv'), headers: true) do |row|
+  Community.find_or_create_by!(row.to_h)
+
+  print '.'
+end
+
+puts "\nFinished create comunas"
