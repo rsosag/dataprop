@@ -1,0 +1,18 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+
+es:
+  activerecord:
+    attributes:
+      user:
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+  sign_in: Iniciar sesión
+  sign_up: Registrarse
+  forgot_password: ¿Olvidaste tu contraseña?
+  did_not_receive_confirmation_instructions: ¿No recibiste instrucciones de confirmación?
+  did_not_receive_unlock_instructions: ¿No recibiste instrucciones de desbloqueo?
+  remember_me: Recuérdame
+  characters_minimum: '%{count} caracteres mínimo'
