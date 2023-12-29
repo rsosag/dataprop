@@ -14,11 +14,14 @@ es:
     errors:
       messages:
         blank: es requerido
-
   sign_in: Iniciar sesión
+  sign_out: Salir
   sign_up: Registrarse
   forgot_password: ¿Olvidaste tu contraseña?
   did_not_receive_confirmation_instructions: ¿No recibiste instrucciones de confirmación?
   did_not_receive_unlock_instructions: ¿No recibiste instrucciones de desbloqueo?
   remember_me: Recuérdame
   characters_minimum: '%{count} caracteres mínimo'
+  properties: Propiedades
+  own_properties: Mi propiedades
+  welcome: Bienvenido %{email}
