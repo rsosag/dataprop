@@ -5,7 +5,9 @@ class Property < ApplicationRecord
   belongs_to :community
   belongs_to :user
 
-  has_many_attached :images
+  has_many_attached :images do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   validates :operation_type, inclusion: [RENT_TYPE, SALE_TYPE], allow_blank: false
   validates :price, numericality: { greater_than: 0 }
