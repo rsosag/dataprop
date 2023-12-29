@@ -1,0 +1,52 @@
+<main class="container">
+  <div class="row">
+    <div class="col">
+
+      <h1 class="display-4"><%= t('own_properties') %></h1>
+
+      <div class="d-flex justify-content-end">
+        <%= link_to new_own_property_path, class: 'btn btn-primary' do %>
+          <i class="bi bi-plus-circle-fill"> <%= t('new_property') %></i>
+        <% end %>
+      </div>
+
+      <% if @own_properties.present? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col"><%= t('activerecord.attributes.property.type') %></th>
+            <th scope="col"><%= t('activerecord.attributes.property.price') %></th>
+            <th scope="col"><%= t('activerecord.attributes.property.community_id') %></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @own_properties.each do |property| %>
+            <tr>
+              <th scope="row"><%= t(property.operation_type) %></th>
+              <td><%= number_to_currency(property.price, unit: property.currency) %></td>
+              <td><%= property.community_name %></td>
+              <td>
+                <%= link_to edit_own_property_path(property) do %>
+                  <i class="bi bi-pencil-square"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to own_property_path(property), method: :delete do %>
+                  <i class="bi bi-trash"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <%= paginate @own_properties, remote: true %>
+
+      <% else %>
+        <p><%= t('not_own_properties') %></p>
+      <% end %>
+    </div>
+  </div>
+</main>
