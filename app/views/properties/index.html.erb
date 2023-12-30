@@ -11,7 +11,7 @@
         <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
           <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <% @properties.each do |property| %>
-              <div class="col">
+              <div class="col" style="min-height: 420px">
                 <div class="card h-100 shadow-sm border-0">
                   <%= image_tag property.images.first, class: 'card-img-top' %>
                   <div class="top-0 end-0 position-absolute rounded-1 text-white p-1 <%= property.rent? ? 'bg-secondary' : 'bg-primary' %>">

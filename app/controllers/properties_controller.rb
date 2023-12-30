@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_own_property, only: %i[edit update destroy]
   def index
     @properties = Property.filter(filtering_params).includes(:community).page(params[:page])

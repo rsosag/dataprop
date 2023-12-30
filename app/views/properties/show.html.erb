@@ -46,7 +46,7 @@
             <i class="bi bi-receipt"></i> <%= t('activerecord.attributes.property.operation_type') %>: <%= t(@property.operation_type) %>
           </p>
           <p class="card-title">
-            <i class="bi bi-receipt"></i> <%= t('activerecord.attributes.property.price') %>: <%= number_to_currency(@property.price, unit: @property.currency) %>
+            <i class="bi bi-receipt"></i> <%= t('activerecord.attributes.property.price') %>: <%= number_to_currency(@property.price, unit: @property.currency) %> <small>(<%= convert_price_for(@property) %>)</small>
           </p>
           <p class="card-title">
             <i class="bi bi-geo-alt-fill"></i> <%= t('activerecord.attributes.property.address') %>: <%= @property.address %>

@@ -30,4 +30,12 @@ class Property < ApplicationRecord
   def sale?
     operation_type == SALE_TYPE
   end
+
+  def price_in_usd?
+    currency == 'USD'
+  end
+
+  def price_in_clp?
+    currency == 'CLP'
+  end
 end
