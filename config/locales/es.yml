@@ -62,3 +62,9 @@ es:
   next: Siguiente
   previous: Anterior
   home: Portal de propiedades
+  views:
+    pagination:
+      first: Primera
+      last: Última
+      next: Siguiente
+      previous: Anterior
