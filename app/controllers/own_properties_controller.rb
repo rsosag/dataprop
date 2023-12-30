@@ -1,5 +1,5 @@
 class OwnPropertiesController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_own_property, only: %i[edit update destroy]
   def index
     @own_properties = current_user.properties.includes(:community).page(params[:page])
