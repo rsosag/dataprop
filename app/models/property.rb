@@ -13,13 +13,13 @@ class Property < ApplicationRecord
 
   validates :operation_type, inclusion: [RENT_TYPE, SALE_TYPE], allow_blank: false
   validates :price, numericality: { greater_than: 0 }
-  validates :area, numericality: { greater_than: 0 }
-  validates :number_of_rooms, numericality: { greater_than: 0, only_integer: true, allow_blank: false }
-  validates :number_of_bathrooms, numericality: { greater_than: 0, only_integer: true, allow_blank: false }
+  validates :area, numericality: { greater_than: 0, allow_blank: true }
+  validates :number_of_rooms, numericality: { greater_than: 0, only_integer: true }
+  validates :number_of_bathrooms, numericality: { greater_than: 0, only_integer: true }
 
   validates :description, no_url: true
   validates :description, no_contain: true
-  validates :description, no_contain: { format: /\b[\d]{3}\)?[\s|-]?[\d]{3}-?[\d]{4}\b/i,
+  validates :description, no_contain: { format: /\b\d{3}\)?[\s|-]?\d{3}-?\d{4}\b/i,
                                         message: I18n.t('cannot_contain_phone_numer') }
 
   scope :filter_by_operation_type, ->(operation_type) { where operation_type: }
