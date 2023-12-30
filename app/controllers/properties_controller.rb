@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
 
     if @property.save
       flash[:success] = t('record_create_success')
-      redirect_to properties_path
+      redirect_to own_properties_properties_path
     else
       flash[:danger] = t('record_create_fail')
       render :new
@@ -29,8 +29,8 @@ class PropertiesController < ApplicationController
 
   def update
     if @property.update(property_params)
-      flash[:success] = t('record_create_success')
-      redirect_to properties_path
+      flash[:success] = t('record_update_success')
+      redirect_to own_properties_properties_path
     else
       flash[:danger] = t('record_update_fail')
       render :edit
@@ -44,7 +44,7 @@ class PropertiesController < ApplicationController
       flash[:danger] = t('record_destroy_fail')
     end
 
-    redirect_to properties_path
+    redirect_to own_properties_properties_path
   end
 
   def own_properties
