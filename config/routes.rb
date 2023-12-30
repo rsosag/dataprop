@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :own_properties
+
+  resources :properties, only: :show
 end

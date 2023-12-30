@@ -1,0 +1,67 @@
+<main class="container justify-content-center">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to t('home'), root_path %>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        <%= truncate(@property.description.present? ? @property.description : @property.id.to_s, length: 25) %>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div id="carouselPropertyImages" class="carousel slide col-md-8" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <% 0.upto(@property.images.count - 1) do |index| %>
+          <button type="button" data-bs-target="#carouselPropertyImages" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" aria-current="true" aria-label="Slide <%= index %>"></button>
+        <% end %>
+      </div>
+
+      <div class="carousel-inner rounded-2">
+        <% @property.images.each_with_index do |image, index| %>
+          <div class="carousel-item <%= 'active' if index.zero? %>">
+            <%= image_tag image, class: 'card-img-top' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5><%= number_to_currency(@property.price, unit: @property.currency) %></h5>
+              <p><%= @property.description %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselPropertyImages" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden"><%= t('previous') %></span>
+      </button>
+      <button class="carousel-control-next fw-bolder" type="button" data-bs-target="#carouselPropertyImages" data-bs-slide="next">
+        <span class="carousel-control-next-icon fw-bolder" aria-hidden="true"></span>
+        <span class="visually-hidden"><%= t('next') %></span>
+      </button>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-title">
+            <i class="bi bi-receipt"></i> <%= t('activerecord.attributes.property.operation_type') %>: <%= t(@property.operation_type) %>
+          </p>
+          <p class="card-title">
+            <i class="bi bi-receipt"></i> <%= t('activerecord.attributes.property.price') %>: <%= number_to_currency(@property.price, unit: @property.currency) %>
+          </p>
+          <p class="card-title">
+            <i class="bi bi-geo-alt-fill"></i> <%= t('activerecord.attributes.property.address') %>: <%= @property.address %>
+          </p>
+          <p class="card-title">
+            <i class="bi bi-square-fill"></i> <%= t('activerecord.attributes.property.area') %>: <%= @property.area %>m2
+          </p>
+          <p class="card-title">
+            <i class="bi bi-person-workspace"></i> <%= t('activerecord.attributes.property.number_of_rooms') %>: <%= @property.number_of_rooms %>
+          </p>
+          <p class="card-title">
+            <i class="bi bi-cloud-sleet"></i> <%= t('activerecord.attributes.property.number_of_bathrooms') %>: <%= @property.number_of_bathrooms %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
