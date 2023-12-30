@@ -10,38 +10,40 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
-<body style="background: #eceffc">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="<%= root_path %>">
-        <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        DATAPROP
-      </a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <% if user_signed_in? %>
-            <li class="nav-item ">
-              <%= link_to t('own_properties').upcase, own_properties_properties_path, class: "nav-link #{ 'active' if params[:action] == 'own_properties' }" %>
-            </li>
-          <% end %>
-        </ul>
-        <!--Login section-->
+<body style="background: #f5f5f5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      DATAPROP
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item ">
+            <%= link_to t('own_properties').upcase, own_properties_properties_path, class: "nav-link #{ 'active' if params[:action] == 'own_properties' }" %>
+          </li>
+        <% end %>
+      </ul>
+      <!--Login section-->
+      <% unless %w[devise/sessions devise/registrations].include?(params[:controller]) %>
         <div class="d-flex">
           <% if user_signed_in? %>
             <div> <%= t('welcome', email: current_user.email) %> </div>
-            <%= button_to t('sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-secondary pl2' %>
+            <%= link_to t('sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-secondary' %>
           <% else %>
-            <%= button_to t('sign_in'), new_user_session_path, class: 'btn btn-primary' %>
+            <%= link_to t('sign_in'), new_user_session_path, class: 'btn btn-sm btn-primary' %>
           <% end %>
         </div>
-      </div>
+      <% end %>
     </div>
-  </nav>
-
-  <div class="content min-vh-100">
-    <%= render partial: 'layouts/flash_message' %>
-
-    <%= yield %>
   </div>
-  </body>
+</nav>
+
+<div class="content min-vh-100 mt-5">
+  <%= render partial: 'layouts/flash_message' %>
+
+  <%= yield %>
+</div>
+</body>
 </html>

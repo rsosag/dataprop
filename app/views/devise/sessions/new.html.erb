@@ -1,29 +1,53 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="d-flex flex-column justify-content-center align-items-center">
+<main class="form-signin d-flex justify-content-center">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div>
+      <h2 class="page-title"><%= t('sign_in') %></h2>
 
-    <h2 class="page-title"><%= t('sign_in') %></h2>
-
-    <div class="form-group mb-3 w-25">
-      <%= f.label :email, class: 'form-label' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'  %>
-    </div>
-
-    <div class="form-group mb-3 w-25">
-      <%= f.label :password, class: 'form-label' %>
-      <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="form-check mb-3 w-25">
-        <%= f.check_box :remember_me, class: 'form-check-input' %>
-        <%= f.label :remember_me, class: 'form-check-label' %>
+      <div class="form-floating">
+        <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control', placeholder: t('activerecord.attributes.user.email') %>
+        <%= f.label :email %>
       </div>
-    <% end %>
 
-    <div class="mb-3 d-flex align-items-center justify-content-center">
-      <%= f.submit t('sign_in'), class: 'btn btn-lg btn-primary rounded-pill' %>
+      <div class="form-floating">
+        <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control', placeholder: t('activerecord.attributes.user.password') %>
+        <%= f.label :password, class: 'form-label' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-check mb-3">
+          <%= f.check_box :remember_me, class: 'form-check-input' %>
+          <%= f.label :remember_me, class: 'form-check-label' %>
+        </div>
+      <% end %>
+
+      <div class="form-group mb3">
+        <%= f.submit t('sign_in'), class: 'w-100 btn btn-lg btn-primary' %>
+      </div>
+
+      <%= render 'devise/shared/links' %>
     </div>
+  <% end %>
+</main>
 
-    <%= render 'devise/shared/links' %>
-  </div>
-<% end %>
+<!--<main class="form-signin">-->
+  <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<!--    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>-->
+
+<!--    <div class="form-floating">-->
+<!--      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">-->
+<!--      <label for="floatingInput">Email address</label>-->
+<!--    </div>-->
+<!--    <div class="form-floating">-->
+<!--      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">-->
+<!--      <label for="floatingPassword">Password</label>-->
+<!--    </div>-->
+
+<!--    <div class="checkbox mb-3">-->
+<!--      <label>-->
+<!--        <input type="checkbox" value="remember-me"> Remember me-->
+<!--      </label>-->
+<!--    </div>-->
+<!--    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>-->
+<!--    <p class="mt-5 mb-3 text-muted">© 2017–2021</p>-->
+  <%# end %>
+<!--</main>-->
