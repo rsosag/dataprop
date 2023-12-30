@@ -3,5 +3,35 @@
     <div class="col">
       <h1 class="display-4">DATAPROP</h1>
     </div>
+    <main>
+      <div class="container-fluid bg-trasparent my-4 p-3" style="position: relative;">
+        <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+
+          <% @properties.each do |property| %>
+            <div class="col">
+              <div class="card h-100 shadow-sm">
+                <%= image_tag property.images.first, class: 'card-img-top' %>
+                <div class="top-0 end-0 position-absolute rounded-1 text-white p-1 <%= property.rent? ? 'bg-secondary' : 'bg-primary' %>">
+                  <%= t(property.operation_type) %>
+                </div>
+                <div class="card-body">
+                  <div class="clearfix mb-3">
+                    <span class="float-start badge rounded-pill bg-success">
+                      <%= number_to_currency(property.price, unit: property.currency) %>
+                    </span>
+                  </div>
+                  <h5 class="card-title">
+                    <%= property.description %>
+                  </h5>
+                  <div class="text-center my-4">
+                    <%= link_to t('show_details'), property_path(property), class: 'btn btn-warning' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </main>
   </div>
 </main>

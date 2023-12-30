@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @properties = Property.includes(:community).page(params[:page])
+  end
 end

@@ -57,3 +57,4 @@ es:
     one: 1 error ha ocurrido
     other: '%{count} errores han ocurrido'
   are_you_sure: ¿Estás seguro?
+  show_details: Ver detalles

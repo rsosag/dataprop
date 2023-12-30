@@ -16,4 +16,13 @@ class Property < ApplicationRecord
   validates :number_of_bathrooms, numericality: { greater_than: 0, only_integer: true, allow_blank: false }
 
   delegate :name, to: :community, prefix: true, allow_nil: false
+
+
+  def rent?
+    operation_type == RENT_TYPE
+  end
+
+  def sale?
+    operation_type == SALE_TYPE
+  end
 end
