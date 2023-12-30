@@ -22,7 +22,7 @@ es:
         number_of_bathrooms: Nro. Baños
         images: Fotos
         description: Descripción
-        area: Área
+        area: Área(m2)
     errors:
       messages:
         blank: es requerido

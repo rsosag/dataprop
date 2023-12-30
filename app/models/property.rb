@@ -17,7 +17,6 @@ class Property < ApplicationRecord
 
   delegate :name, to: :community, prefix: true, allow_nil: false
 
-
   def rent?
     operation_type == RENT_TYPE
   end

@@ -5,12 +5,12 @@
       <h1 class="display-4"><%= t('own_properties') %></h1>
 
       <div class="d-flex justify-content-end">
-        <%= link_to new_own_property_path, class: 'btn btn-primary' do %>
+        <%= link_to new_property_path, class: 'btn btn-primary' do %>
           <i class="bi bi-plus-circle-fill"> <%= t('new_property') %></i>
         <% end %>
       </div>
 
-      <% if @own_properties.present? %>
+      <% if @properties.present? %>
         <table class="table">
           <thead>
           <tr>
@@ -22,18 +22,18 @@
           </tr>
           </thead>
           <tbody>
-          <% @own_properties.each do |property| %>
+          <% @properties.each do |property| %>
             <tr>
               <th scope="row"><%= t(property.operation_type) %></th>
               <td><%= number_to_currency(property.price, unit: property.currency) %></td>
               <td><%= property.community_name %></td>
               <td>
-                <%= link_to edit_own_property_path(property) do %>
+                <%= link_to edit_property_path(property) do %>
                   <i class="bi bi-pencil-square"></i>
                 <% end %>
               </td>
               <td>
-                <%= link_to own_property_path(property), data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } do %>
+                <%= link_to property_path(property), data: { turbo_method: :delete, turbo_confirm: t('are_you_sure') } do %>
                   <i class="bi bi-trash"></i>
                 <% end %>
               </td>
@@ -42,7 +42,7 @@
           </tbody>
         </table>
 
-        <%= paginate @own_properties, remote: true %>
+        <%= paginate @properties, remote: true %>
 
       <% else %>
         <p><%= t('not_own_properties') %></p>

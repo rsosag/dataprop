@@ -1,16 +1,16 @@
-<% if @own_property.errors.any? %>
-  <%= render 'layouts/flash_errors_explanation', record: @own_property %>
+<% if @property.errors.any? %>
+  <%= render 'layouts/flash_errors_explanation', record: @property %>
 <% end %>
 
 <div class="row mb-3">
   <div class="col-md-6 col-sm-12">
     <%= form.label :operation_type, class: 'form-label' %>
-    <%= form.select :operation_type, types_collection, { selected: @own_property.operation_type, include_blank: true }, class: 'form-select' %>
+    <%= form.select :operation_type, types_collection, { selected: @property.operation_type, include_blank: true }, class: 'form-select' %>
   </div>
 
-  <div class="col-md-6 col-sm-124">
+  <div class="col-md-6 col-sm-12">
     <%= form.label :community_id, class: 'form-label' %>
-    <%= form.select :community_id, communities_collection, { selected: @own_property.community_id, include_blank: true }, class: 'form-select' %>
+    <%= form.select :community_id, communities_collection, { selected: @property.community_id, include_blank: true }, class: 'form-select' %>
   </div>
 </div>
 
@@ -22,7 +22,7 @@
 
   <div class="col-md-6 col-sm-12">
     <%= form.label :currency, class: 'form-label' %>
-    <%= form.select :currency, currencies_collection, { selected: @own_property.currency, include_blank: true }, class: 'form-select' %>
+    <%= form.select :currency, currencies_collection, { selected: @property.currency, include_blank: true }, class: 'form-select' %>
   </div>
 </div>
 
@@ -59,7 +59,7 @@
 
 <div class="row mb-3">
   <div class="col-12">
-    <% @own_property.images.each do |image| %>
+    <% @property.images.each do |image| %>
       <%= image_tag image.variant(:thumb) %>
 
       <%= form.hidden_field :images, multiple: true, value: image.signed_id %>

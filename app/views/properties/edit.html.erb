@@ -1,6 +1,6 @@
 <main class="container">
   <h1><%= t('edit_property') %></h1>
-  <%= form_with model: @own_property, url: own_property_path, method: :put, data: { turbo: false } do |form| %>
+  <%= form_with model: @property, url: property_path, method: :put, data: { turbo: false } do |form| %>
     <%= render 'form', form: form %>
   <% end %>
 </main>

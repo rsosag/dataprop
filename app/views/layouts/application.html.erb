@@ -21,7 +21,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <% if user_signed_in? %>
             <li class="nav-item ">
-              <%= link_to t('own_properties').upcase, own_properties_path, class: "nav-link #{ 'active' if params[:controller] == 'own_properties' }" %>
+              <%= link_to t('own_properties').upcase, own_properties_properties_path, class: "nav-link #{ 'active' if params[:action] == 'own_properties' }" %>
             </li>
           <% end %>
         </ul>

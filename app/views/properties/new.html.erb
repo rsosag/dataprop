@@ -1,6 +1,6 @@
 <main class="container">
   <h1><%= t('new_property') %></h1>
-  <%= form_with model: @own_property, url: own_properties_path, method: :post, data: {turbo: false} do |form| %>
+  <%= form_with model: @property, url: properties_path, method: :post, data: {turbo: false} do |form| %>
     <%= render 'form', form: form %>
   <% end %>
 </main>
