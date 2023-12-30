@@ -9,6 +9,7 @@ es:
         email: Correo electrónico
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        remember_me: Recúerdame
       community:
         name: Nombre
       property:
@@ -39,7 +40,7 @@ es:
   characters_minimum: '%{count} caracteres mínimo'
   properties: Propiedades
   own_properties: Mis propiedades
-  welcome: Bienvenido %{email}
+  logged_in_as_html: Conectado <strong>%{email}</strong>
   not_own_properties: No tienes propiedades
   destroy: Eliminar
   edit: Actualizar
