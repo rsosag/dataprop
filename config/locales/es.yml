@@ -69,3 +69,6 @@ es:
       next: Siguiente
       previous: Anterior
   search: Buscar
+  cannot_contain_url: no puede contener URL
+  cannot_contain_email: no puede contener email
+  cannot_contain_phone_numer: no puede contener número de teléfono

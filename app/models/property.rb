@@ -17,6 +17,11 @@ class Property < ApplicationRecord
   validates :number_of_rooms, numericality: { greater_than: 0, only_integer: true, allow_blank: false }
   validates :number_of_bathrooms, numericality: { greater_than: 0, only_integer: true, allow_blank: false }
 
+  validates :description, no_url: true
+  validates :description, no_contain: true
+  validates :description, no_contain: { format: /\b[\d]{3}\)?[\s|-]?[\d]{3}-?[\d]{4}\b/i,
+                                        message: I18n.t('cannot_contain_phone_numer') }
+
   scope :filter_by_operation_type, ->(operation_type) { where operation_type: }
   scope :filter_by_community, ->(community_id) { where community_id: }
   scope :filter_by_number_of_rooms, ->(number_of_rooms) { where number_of_rooms: }
