@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_own_property, only: %i[edit update destroy]
   def index
-    @properties = Property.includes(:community).page(params[:page])
+    @properties = Property.filter(filtering_params).includes(:community).page(params[:page])
   end
 
   def show
@@ -62,5 +62,10 @@ class PropertiesController < ApplicationController
 
   def set_own_property
     @property = current_user.properties.find(params[:id])
+  end
+
+  # A list of the param names that can be used for filtering the Properties list
+  def filtering_params
+    params[:filter]&.permit(:operation_type, :community, :number_of_rooms).to_h
   end
 end

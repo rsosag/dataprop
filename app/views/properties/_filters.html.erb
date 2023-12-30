@@ -1,0 +1,22 @@
+<%= form_with(scope: :filter, url: properties_path, method: :get, data: { controller: 'properties', properties_target: 'form', turbo_frame: 'properties' }) do |form| %>
+  <div class="row mb-3">
+    <div class="col-md-3 col-sm-12">
+      <%= form.label t('activerecord.attributes.property.operation_type'), class: 'form-label' %>
+      <%= form.select :operation_type, types_collection, { selected: params.dig('filter', 'operation_type'), include_blank: true }, class: 'form-select' %>
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <%= form.label t('activerecord.attributes.property.community'), class: 'form-label' %>
+      <%= form.select :community, communities_collection, { selected: params.dig('filter', 'community_id'), include_blank: true }, class: 'form-select' %>
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <%= form.label t('activerecord.attributes.property.number_of_rooms'), class: 'form-label' %>
+      <%= form.text_field :number_of_rooms, value: params.dig('filter', 'number_of_rooms'), class: 'form-control' %>
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <%= form.submit t('search'), class: 'btn btn-primary d-flex', style: 'margin-top: 2rem;' %>
+    </div>
+  </div>
+<% end %>
