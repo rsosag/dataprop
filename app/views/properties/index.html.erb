@@ -18,14 +18,18 @@
                     <%= t(property.operation_type) %>
                   </div>
                   <div class="card-body">
-                    <div class="clearfix mb-3">
-                    <span class="float-start badge rounded-pill bg-success">
-                      <%= number_to_currency(property.price, unit: property.currency) %>
-                    </span>
+                    <div class="mb-3">
+                      <span class="float-start badge rounded-pill bg-success">
+                        <%= number_to_currency(property.price, unit: property.currency) %>
+                      </span>
                     </div>
-                    <h5 class="card-title">
-                      <%= property.description %>
-                    </h5>
+                    <br>
+                    <div class="card-title d-flex flex-wrap">
+                      <p><i class="bi bi-square-fill"></i> <%= t('activerecord.attributes.property.area') %>: <%= property.area %></p>
+                      <p><i class="bi bi-person-workspace"></i> <%= t('activerecord.attributes.property.number_of_rooms') %>: <%= property.number_of_rooms %></p>
+                      <p><i class="bi bi-cloud-sleet"></i> <%= t('activerecord.attributes.property.number_of_bathrooms') %>: <%= property.number_of_bathrooms %></p>
+                    </div>
+
                     <div class="text-center my-4">
                       <%= link_to t('show_details'), property_path(property), target: '_blank', data: { turbo: false }, class: 'btn btn-warning' %>
                     </div>
