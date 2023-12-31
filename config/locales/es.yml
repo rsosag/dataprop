@@ -14,7 +14,7 @@ es:
         name: Nombre
       property:
         price: Precio
-        operation_type: Tipo
+        operation_type: Tipo de operación
         currency: Moneda
         user_id: Gestor
         community: Comuna
