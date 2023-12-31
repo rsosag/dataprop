@@ -1,24 +1,49 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+- PostgreSQL `sudo apt install postgresql`
+- Yarn `npm install yarn`
+- Bundler `gem install bundle`
+- Ruby 3.2.0
 
-* Ruby version
+## Getting started
 
-* System dependencies
+### Clone the repository
+```shell
+git clone git@github.com:rsosag/dataprop.git
+```
+### Move to the project directory
+```shell
+cd dataprop
+```
+### Install gems dependencies
+```shell
+bundle install
+```
+### Install yarn dependencies
+```shell
+yarn install
+yarn build:css
+rails assets:procompile
+```
+### Create and populate the database
+```shell
+rails db:create
+rails db:migrate
+rails db:seed
+```
+### Start Rails:
+```shell
+bundle exec rails server
+```
 
-* Configuration
+### How to run tests
+```shell
+bundle exec rspec
+```
+### ERD
 
-* Database creation
+[![ERD](https://i.imgur.com/anN4joO.png)](https://i.imgur.com/anN4joO.png)
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
