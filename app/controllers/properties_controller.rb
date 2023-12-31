@@ -23,7 +23,6 @@ class PropertiesController < ApplicationController
       flash[:success] = t('record_create_success')
       redirect_to own_properties_properties_path
     else
-      flash[:danger] = t('record_create_fail')
       render :new
     end
   end
@@ -33,7 +32,6 @@ class PropertiesController < ApplicationController
       flash[:success] = t('record_update_success')
       redirect_to own_properties_properties_path
     else
-      flash[:danger] = t('record_update_fail')
       render :edit
     end
   end
