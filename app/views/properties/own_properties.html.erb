@@ -1,13 +1,14 @@
 <main class="container">
   <div class="row">
     <div class="col">
+      <div class="col d-flex justify-content-between align-items-center">
+        <h1 class="display-4"><%= t('own_properties') %></h1>
 
-      <h1 class="display-4"><%= t('own_properties') %></h1>
-
-      <div class="d-flex justify-content-end">
-        <%= link_to new_property_path, class: 'btn btn-primary' do %>
-          <i class="bi bi-plus-circle-fill"> <%= t('new_property') %></i>
-        <% end %>
+        <div class="">
+          <%= link_to new_property_path, class: 'btn btn-primary' do %>
+            <i class="bi bi-plus-circle-fill"> <%= t('new_property') %></i>
+          <% end %>
+        </div>
       </div>
 
       <% if @properties.present? %>
@@ -45,7 +46,9 @@
         <%= paginate @properties, remote: true %>
 
       <% else %>
-        <p><%= t('not_own_properties') %></p>
+        <div class="alert alert-danger" role="alert">
+          <%= t('not_own_properties') %>
+        </div>
       <% end %>
     </div>
   </div>
